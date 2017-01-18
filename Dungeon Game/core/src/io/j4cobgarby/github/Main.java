@@ -16,24 +16,51 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public class Main extends ApplicationAdapter {
+	// An orthographic (2D, in this case) camera.
     OrthographicCamera          camera;
+	
+	// This SpriteBatch will render most things. For instance,
+	// the player; the world; the monsters.
     SpriteBatch                 batch;
+	
+	// This SpriteBatch will render the HUD (heads up display).
+	// A seperate batch is used to ease the coding OF the
+	// HUD. This is only for the text and keys in the HUD.
     SpriteBatch                 hudBatch;
+	
+	// This ShapeRenderer is for, for example, the debugging
+	// collision shapes.
     ShapeRenderer               shaper;
+	
+	// This renders the non-sprite parts of the HUD, i.e. the
+	// actual box, outline, etc.
     ShapeRenderer               hudRend;
+	
+	// The instance of the Player class, used for the player of
+	// the game. It's public and static so that it can be
+	// accessed outside of this class, used in other classes easily.
     public static Player        player;
+	
+	// The HUD. 'nuff said.
     Hud                         hud;
     
+	// Some levels.             // currentLevel is changed to whatever level the player is currently on.
     static LevelWithSpawns      currentLevel;
     static LevelWithSpawns      level1;
     static LevelWithSpawns      level2;
     
+	// This is to render the map. I use Tiled to create the tilemaps.
     TiledMapRenderer            tiledMapRenderer;
     
+	// I'm not sure, but I think this is the size, in pixels,
+	// of the tiles.
     static int                  tileSize = 8;
     
-    static String               version = "b0.04";
+	// The display version of the game.
+    static String               version = "b0.06";
     
+	// Whether or not to show the debug information. In a release build,
+	// this will always be false.
     static boolean              show_debug = false;
     
     @Override
